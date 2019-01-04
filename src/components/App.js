@@ -9,16 +9,18 @@ import RegisterPage from '../pages/register';
 const App = () => (
   <div>
     <Header />
+    <main>
+      <Switch>
+        <Route exact path="/" component={LandingPage} />
+        <Route exact path="/boards" component={BoardsPage} />
+        <Route exact path="/login" component={LoginPage} />
+        <Route exact path="/register" component={RegisterPage} />
+      </Switch>
 
-    <Switch>
-      <Route exact path="/" component={LandingPage} />
-      <Route exact path="/boards" component={BoardsPage} />
-      <Route exact path="/login" component={LoginPage} />
-      <Route exact path="/register" component={RegisterPage} />
-    </Switch>
-    <div>
-      <h2>Apollo app test</h2>
-    </div>
+      <div>
+        <h2>Apollo app test</h2>
+      </div>
+    </main>
   </div>
 );
 
