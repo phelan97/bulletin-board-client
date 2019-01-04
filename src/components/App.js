@@ -16,10 +16,6 @@ const App = () => (
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/register" component={RegisterPage} />
       </Switch>
-
-      <div>
-        <h2>Apollo app test</h2>
-      </div>
     </main>
   </div>
 );
