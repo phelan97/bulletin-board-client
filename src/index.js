@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ApolloClient, { InMemoryCache } from 'apollo-boost';
+import { ApolloClient, InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 import {BrowserRouter as Router} from 'react-router-dom';
 import {createHttpLink} from 'apollo-link-http';
@@ -13,6 +13,8 @@ import * as serviceWorker from './serviceWorker';
 const httpLink = createHttpLink({
   uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 });
+
+console.log(httpLink.uri);
 
 const authLink = setContext((_, {headers}) => {
   const token = localStorage.getItem('Authorization');
