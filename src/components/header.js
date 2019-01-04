@@ -19,7 +19,7 @@ class Header extends React.Component {
           <nav>
             <ul>
               <li className="button-home"><Link to="/"><button>Home</button></Link></li>
-              <li><Link to="/boards"><button>Boards</button></Link></li>
+              {loggedIn ? <li><Link to="/boards"><button>Boards</button></Link></li> : null}
               {loggedIn ? logOutButton : logInButton}
               {loggedIn ? null : <li><Link to="/register"><button>Register</button></Link></li>}
             </ul>
