@@ -1,11 +1,7 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-
+import './header.css';
 class Header extends React.Component {
-  state = {
-    loggedIn: false
-  };
-
   logout() {
     localStorage.clear('Authorization');
     this.props.history.push('/');
@@ -22,7 +18,7 @@ class Header extends React.Component {
       <header>
           <nav>
             <ul>
-              <li><Link to="/"><button>Home</button></Link></li>
+              <li className="button-home"><Link to="/"><button>Home</button></Link></li>
               <li><Link to="/boards"><button>Boards</button></Link></li>
               {loggedIn ? logOutButton : logInButton}
               <li><Link to="/register"><button>Register</button></Link></li>

@@ -1,0 +1,34 @@
+ul {
+  padding-left: 0;
+  margin-top: 0;
+  margin-right: 20px;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+li {
+  margin-right: 10px;
+}
+
+header {
+  background-color: #E58535;
+}
+
+nav button {
+  padding: 3px 10px;
+  background-color: #ccc;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+nav button:hover {
+  box-shadow: 1px 1px #eee;
+}
+
+.button-home {
+  margin-right: auto;
+  margin-left: 20px;
+  padding: 4px 5px;
+}

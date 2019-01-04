@@ -7,14 +7,13 @@ import {createHttpLink} from 'apollo-link-http';
 import {setContext} from 'apollo-link-context';
 import App from './components/App';
 import {endpoint, prodEndpoint} from './config';
+import 'normalize.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const httpLink = createHttpLink({
   uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 });
-
-console.log(httpLink.uri);
 
 const authLink = setContext((_, {headers}) => {
   const token = localStorage.getItem('Authorization');
