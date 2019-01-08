@@ -21,6 +21,12 @@ export const CREATE_BOARD = gql`
   }
 `;
 
+export const DELETE_BOARD = gql`
+  mutation DeleteBoardMutation($boardId: ID!) {
+    removeBoard(boardId: $boardId)
+  }
+`;
+
 export const CREATE_LIST = gql`
   mutation CreateListMutation($boardId: ID!, $title: String!) {
     addList(boardId: $boardId, title: $title) {

@@ -30,7 +30,7 @@ class BoardsPage extends React.Component {
           }
           if(data.boards) {
             boards = data.boards.map(board => {
-              return <BoardLinkCard title={board.title} id={board.id}/>
+              return <BoardLinkCard title={board.title} id={board.id} refetch={refetch}/>
             });
           }
           return (
