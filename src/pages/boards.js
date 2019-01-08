@@ -2,6 +2,7 @@ import React from 'react';
 import {Query, Mutation} from 'react-apollo';
 import {ALL_BOARDS} from '../graphql/queries';
 import {CREATE_BOARD} from '../graphql/mutations';
+import BoardLinkCard from '../components/board-link-card'
 
 class BoardsPage extends React.Component {
   state = {
@@ -28,8 +29,8 @@ class BoardsPage extends React.Component {
             boards = <p>Loading</p>
           }
           if(data.boards) {
-            boards = data.boards.map((board, index) => {
-              return <div>{board.title}</div>
+            boards = data.boards.map(board => {
+              return <BoardLinkCard title={board.title} id={board.id}/>
             });
           }
           return (
