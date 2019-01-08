@@ -26,7 +26,7 @@ export const BOARD_LISTS = gql`
   }
 `;
 
-export const ALL_CARDS = gql`
+export const LIST_CARDS = gql`
   query CardsByList($listId: ID!) {
     cards(listId: $listId) {
       listId
