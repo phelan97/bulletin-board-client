@@ -4,6 +4,7 @@ import {Query, Mutation} from 'react-apollo';
 import {BOARD_LISTS} from '../graphql/queries';
 import {CREATE_LIST} from '../graphql/mutations';
 import List from '../components/list';
+import './board.css';
 
 class BoardPage extends React.Component {
   state = {
@@ -26,13 +27,16 @@ class BoardPage extends React.Component {
         }
         let renderedLists;
         if(data.lists) {
-          console.log('lists', data.lists);
           renderedLists = data.lists.map(list => {
             return <li key={list.id}><List data={list} boardId={this.state.boardId} /></li>
           });
         }
         return (
-          <React.Fragment>
+          <div className="outer-scroll-container">
+            <div className="list-container">
+            <ul className="all-lists">
+              {renderedLists}
+            </ul>
             <Mutation mutation={CREATE_LIST}
               variables={{title: this.state.listName, boardId: this.state.boardId}}
               onCompleted={data => {
@@ -53,10 +57,8 @@ class BoardPage extends React.Component {
                 );
               }}
             </Mutation>
-            <ul>
-              {renderedLists}
-            </ul>
-          </React.Fragment>
+            </div>
+          </div>
         );
       }}
       </Query>

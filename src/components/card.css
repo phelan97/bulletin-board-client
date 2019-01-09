@@ -1,24 +1,20 @@
-.list-card li {
+.card-item {
   width: 100%;
-}
-
-.list-controls {
-  float: right;
-}
-
-.ul-cards {
-  display: block;
-  padding-left: 0px;
-  list-style: none;
-}
-
-.list-card {
+  display: inline-block;
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #fff;
-  background: #CFD8DC;
   /* margin: 0px 20px 20px; */
   /* margin: 20px; */
   padding: 10px;
-  margin-right: 15px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.card-item:hover {
+  cursor: pointer;
+}
+
+.edit-controls {
+  float: right;
 }

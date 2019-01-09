@@ -16,7 +16,7 @@ class BoardsPage extends React.Component {
 
   render() {
     return (
-      <React.Fragment>
+      <div className="outer-container">
         <h2>Boards</h2>
         <Query query={ALL_BOARDS}>
         {({error, loading, data, refetch}) => {
@@ -58,7 +58,7 @@ class BoardsPage extends React.Component {
           )
         }}
         </Query>
-      </React.Fragment>
+      </div>
     );
   }
 }

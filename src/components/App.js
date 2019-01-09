@@ -7,7 +7,6 @@ import LoginPage from '../pages/login';
 import RegisterPage from '../pages/register';
 import BoardPage from '../pages/board';
 import DemoPage from '../pages/demo';
-import './App.css';
 
 const App = () => (
   <React.Fragment>

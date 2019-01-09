@@ -37,7 +37,7 @@ class List extends React.Component {
             });
           }
           return (
-            <div className="card-list">
+            <div className="list-card">
               <div className="list-controls">
                 {/* <Mutation mutation={EDIT_LIST}
                   variables={{content: this.state.cardContents, listId: this.props.data.id}}
@@ -66,7 +66,7 @@ class List extends React.Component {
               </div>
               <div>
                 <h3>{this.props.data.title}</h3>
-                <ul>
+                <ul className="ul-cards">
                   {renderedCards}
                 </ul>
               </div>

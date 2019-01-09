@@ -1,4 +1,4 @@
-ul {
+nav ul {
   padding-left: 0;
   margin-top: 0;
   margin-right: 20px;
@@ -9,7 +9,7 @@ ul {
   align-items: center;
 }
 
-li {
+nav li {
   margin-right: 10px;
 }
 

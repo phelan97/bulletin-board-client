@@ -1,7 +1,7 @@
 import React from 'react';
 import {Mutation} from 'react-apollo';
 import {DELETE_CARD} from '../graphql/mutations';
-import './card-item.css';
+import './card.css';
 
 class Card extends React.Component {
   constructor(props) {
