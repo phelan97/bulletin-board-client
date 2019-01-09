@@ -43,7 +43,7 @@ class RegisterForm extends React.Component {
                 type='password' 
                 name='password' 
                 placeholder='Password' 
-                value={this.state.email}
+                value={this.state.password}
                 onChange={this.saveToState} />
                 <button type='submit'>Register</button>
               </fieldset>
