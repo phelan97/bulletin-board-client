@@ -1,0 +1,13 @@
+
+.card-item {
+  width: 100%;
+  display: inline-block;
+}
+
+.card-item:hover {
+  cursor: pointer;
+}
+
+.edit-controls {
+  float: right;
+}

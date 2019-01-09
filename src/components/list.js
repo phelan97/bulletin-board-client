@@ -1,7 +1,9 @@
 import React from 'react';
 import {Query, Mutation} from 'react-apollo';
-import {LIST_CARDS} from '../graphql/queries';
-import {CREATE_CARD} from '../graphql/mutations';
+import {LIST_CARDS, BOARD_LISTS} from '../graphql/queries';
+import {CREATE_CARD, EDIT_LIST, DELETE_LIST} from '../graphql/mutations';
+import Card from './card';
+import './list.css';
 
 class List extends React.Component {
   state = {
@@ -23,11 +25,45 @@ class List extends React.Component {
           }
           if(data.cards) {
             renderedCards = data.cards.map(card => {
-              return <li key={card.id}><div>{card.content}</div></li>
+              return (
+                <li key={card.id}>
+                  <Card
+                    id={card.id}
+                    content={card.content}
+                    refetch={refetch}
+                  />
+                </li>
+              );
             });
           }
           return (
-            <React.Fragment>
+            <div className="card-list">
+              <div className="list-controls">
+                {/* <Mutation mutation={EDIT_LIST}
+                  variables={{content: this.state.cardContents, listId: this.props.data.id}}
+                  onCompleted={data => {
+                    refetch();
+                }}>
+                 {(addCard, {error}) => {
+                  return <button>Edit</button>;
+                 }}
+                </Mutation> */}
+                <Mutation mutation={DELETE_LIST}
+                  variables={{listId: this.props.data.id}}
+                  update={(cache, {data: {deleteList}}) => {
+                    const data = cache.readQuery({ query: BOARD_LISTS, variables: {boardId: this.props.boardId} });
+                    data.lists = data.lists.filter(list => list.id !== this.props.data.id);
+                    cache.writeQuery({
+                      query: BOARD_LISTS,
+                      data,
+                      variables: {boardId: this.props.boardId}
+                    });
+                }}>
+                 {(deleteList, {error}) => {
+                  return <button onClick={deleteList}>Delete</button>;
+                 }}
+                </Mutation>
+              </div>
               <div>
                 <h3>{this.props.data.title}</h3>
                 <ul>
@@ -54,7 +90,7 @@ class List extends React.Component {
                   );
                 }}
               </Mutation>
-            </React.Fragment>
+            </div>
           );
         }}
         </Query>

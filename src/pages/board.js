@@ -7,7 +7,8 @@ import List from '../components/list';
 
 class BoardPage extends React.Component {
   state = {
-    listName: ''
+    listName: '',
+    boardId: this.props.match.params.id
   }
   saveToState = (e) => {
     this.setState({ [e.target.name]: e.target.value})   
@@ -15,7 +16,7 @@ class BoardPage extends React.Component {
 
   render() {
     return (
-      <Query query={BOARD_LISTS} variables={{boardId: this.props.match.params.id}}>
+      <Query query={BOARD_LISTS} variables={{boardId: this.state.boardId}}>
         {({data, error, loading, refetch}) => {
         if(error) {
           return <p>Could not find this board. It may have been deleted or the url may be malformed</p>
@@ -27,13 +28,13 @@ class BoardPage extends React.Component {
         if(data.lists) {
           console.log('lists', data.lists);
           renderedLists = data.lists.map(list => {
-            return <li key={list.id}><List data={list} /></li>
+            return <li key={list.id}><List data={list} boardId={this.state.boardId} /></li>
           });
         }
         return (
           <React.Fragment>
             <Mutation mutation={CREATE_LIST}
-              variables={{title: this.state.listName, boardId: this.props.match.params.id}}
+              variables={{title: this.state.listName, boardId: this.state.boardId}}
               onCompleted={data => {
                 refetch();
             }}>

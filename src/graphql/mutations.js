@@ -36,6 +36,21 @@ export const CREATE_LIST = gql`
   }
 `;
 
+export const EDIT_LIST = gql`
+  mutation EditListMutation($listId: ID!, $title: String!) {
+    addList(boardId: $boardId, title: $title) {
+      id
+      title
+    }
+  }
+`;
+
+export const DELETE_LIST = gql`
+  mutation DeleteListMutation($listId: ID!) {
+    removeList(listId: $listId)
+  }
+`;
+
 export const CREATE_CARD = gql`
   mutation CreateCardMutation($listId: ID!, $content: String!) {
     addCard(listId: $listId, content: $content) {
