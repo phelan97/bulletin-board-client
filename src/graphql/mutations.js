@@ -59,3 +59,9 @@ export const CREATE_CARD = gql`
     }
   }
 `
+
+export const DELETE_CARD = gql`
+  mutation DeleteCardMutation($cardId: ID!) {
+    removeCard(cardId: $cardId)
+  }
+`

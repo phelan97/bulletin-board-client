@@ -1,4 +1,6 @@
 import React from 'react';
+import {Mutation} from 'react-apollo';
+import {DELETE_CARD} from '../graphql/mutations';
 import './card-item.css';
 
 class Card extends React.Component {
@@ -22,12 +24,20 @@ class Card extends React.Component {
         <span>{this.props.content}</span>
         {this.state.isHovering &&
           <div className="edit-controls">
-            <button>Edit</button>
-            <button>Delete</button>
+            {/* <button>Edit</button> */}
+            <Mutation mutation={DELETE_CARD}
+              variables={{cardId: this.props.id}}
+              onCompleted={data => {
+                this.props.refetch();
+              }}>
+              {(deleteCard, {error}) => {
+                return <button onClick={deleteCard}>Delete</button>
+              }}
+            </Mutation>
           </div>
         }
       </div>
-    )
+    );
   }
 }
 
