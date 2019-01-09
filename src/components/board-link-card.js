@@ -2,9 +2,10 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import {Mutation} from 'react-apollo';
 import {DELETE_BOARD} from '../graphql/mutations';
+import './board-link-card.css';
 
 const BoardLinkCard = (props) => (
-    <div key={props.id}>
+    <div className="board-card" key={props.id}>
       <Link to={`/board/${props.id}`}>
         <h3>{props.title}</h3>
       </Link>

@@ -3,6 +3,7 @@ import {Query, Mutation} from 'react-apollo';
 import {ALL_BOARDS} from '../graphql/queries';
 import {CREATE_BOARD} from '../graphql/mutations';
 import BoardLinkCard from '../components/board-link-card'
+import './boards.css';
 
 class BoardsPage extends React.Component {
   state = {
@@ -15,11 +16,9 @@ class BoardsPage extends React.Component {
 
   render() {
     return (
-      <div>
-        <h2>Boards page</h2>
-        <Query query={ALL_BOARDS} onCompleted={data => {
-          console.log('BOARDS', data);
-        }}>
+      <React.Fragment>
+        <h2>Boards</h2>
+        <Query query={ALL_BOARDS}>
         {({error, loading, data, refetch}) => {
           let boards;
           if(error) {
@@ -34,31 +33,32 @@ class BoardsPage extends React.Component {
             });
           }
           return (
-            <React.Fragment>
+            <div className="board-container">
               {boards}
               <Mutation mutation={CREATE_BOARD} variables={{title: this.state.boardName}} onCompleted={data => {
                 refetch();
               }}>
                 {(addBoard, {error}) => {
                   return (
-                    <form onSubmit={e => {
-                      e.preventDefault();
-                      addBoard();
-                      this.setState({boardName: ''});
+                    <form className="board-add-form"
+                      onSubmit={e => {
+                        e.preventDefault();
+                        addBoard();
+                        this.setState({boardName: ''});
                     }}>
-                      <label htmlFor="boardName">Board name</label>
-                      <input type="text" name="boardName" placeholder="Title"
+                      <label htmlFor="boardName">Add a new board</label>
+                      <input type="text" name="boardName" placeholder="Board title"
                         value={this.state.boardName} onChange={this.saveToState}></input>
-                      <button type="submit">Add board</button>
+                      <button type="submit">Create board</button>
                     </form>
                   ); 
                 }}
               </Mutation>
-            </React.Fragment>
+            </div>
           )
         }}
         </Query>
-      </div>
+      </React.Fragment>
     );
   }
 }

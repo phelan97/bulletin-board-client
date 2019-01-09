@@ -1,0 +1,25 @@
+.board-card {
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  background: #fff;
+  /* margin: 0px 20px 20px; */
+  /* margin: 20px; */
+  padding: 10px;
+}
+
+.board-card h3 {
+  margin-top: 0;
+}
+
+.board-card button {
+  float: right;
+}
+
+.board-card a {
+  text-decoration: none;
+  color: #37474F;
+}
+
+.board-card a:hover {
+  text-decoration: underline;
+}

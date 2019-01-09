@@ -7,9 +7,10 @@ import LoginPage from '../pages/login';
 import RegisterPage from '../pages/register';
 import BoardPage from '../pages/board';
 import DemoPage from '../pages/demo';
+import './App.css';
 
 const App = () => (
-  <div>
+  <React.Fragment>
     <Header />
     <main>
       <Switch>
@@ -21,7 +22,7 @@ const App = () => (
         <Route exact path="/board/:id" component={BoardPage} />
       </Switch>
     </main>
-  </div>
+  </React.Fragment>
 );
 
 export default App;
