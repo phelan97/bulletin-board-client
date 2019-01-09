@@ -36,3 +36,9 @@ export const LIST_CARDS = gql`
     }
   }
 `;
+
+export const DEMO_LOGIN = gql`
+  {
+    demoAccount
+  }
+`;

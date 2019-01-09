@@ -6,6 +6,7 @@ import BoardsPage from '../pages/boards';
 import LoginPage from '../pages/login';
 import RegisterPage from '../pages/register';
 import BoardPage from '../pages/board';
+import DemoPage from '../pages/demo';
 
 const App = () => (
   <div>
@@ -15,6 +16,7 @@ const App = () => (
         <Route exact path="/" component={LandingPage} />
         <Route exact path="/login" component={LoginPage} />
         <Route exact path="/register" component={RegisterPage} />
+        <Route exact path="/demo" component={DemoPage} />
         <Route exact path="/boards" component={BoardsPage} />
         <Route exact path="/board/:id" component={BoardPage} />
       </Switch>

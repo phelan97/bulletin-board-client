@@ -1,9 +1,11 @@
 import React from 'react';
+import {withApollo} from 'react-apollo';
 import {Link, withRouter} from 'react-router-dom';
 import './header.css';
 class Header extends React.Component {
   logout() {
     localStorage.clear('Authorization');
+    this.props.client.cache.reset();
     this.props.history.push('/');
   }
 
@@ -29,4 +31,4 @@ class Header extends React.Component {
   }
 }
 
-export default withRouter(Header);
+export default withApollo(withRouter(Header));
