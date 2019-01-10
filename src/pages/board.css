@@ -19,8 +19,13 @@
 
 .list-container form {
   display: inline-block;
+  margin-top: 20px;
 }
 
+.list-container input {
+  margin-top: 3px;
+  margin-bottom: 0px;
+}
 .all-lists {
   list-style: none;
   display: flex;
