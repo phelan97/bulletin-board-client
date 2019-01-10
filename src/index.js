@@ -12,11 +12,9 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const httpLink = createHttpLink({
-  uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
+  // uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
+  uri: prodEndpoint
 });
-
-console.log(process.env.NODE_ENV);
-console.log(httpLink.uri);
 
 const authLink = setContext((_, {headers}) => {
   const token = localStorage.getItem('Authorization');
