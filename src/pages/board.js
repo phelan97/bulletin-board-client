@@ -20,7 +20,7 @@ class BoardPage extends React.Component {
       <Query query={BOARD_LISTS} variables={{boardId: this.state.boardId}}>
         {({data, error, loading, refetch}) => {
         if(error) {
-          return <p>Could not find this board. It may have been deleted or the url may be malformed</p>
+          return <h2>Could not locate board</h2>
         }
         if(loading) {
           return <p>Loading</p>
