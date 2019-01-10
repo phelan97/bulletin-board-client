@@ -15,6 +15,9 @@ const httpLink = createHttpLink({
   uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
 });
 
+console.log(process.env.NODE_ENV);
+console.log(httpLink.uri);
+
 const authLink = setContext((_, {headers}) => {
   const token = localStorage.getItem('Authorization');
   return {
