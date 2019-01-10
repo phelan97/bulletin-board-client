@@ -23,7 +23,6 @@ class RegisterForm extends React.Component {
         {(login, {loading, error}) => {    
           return (
             <form method='post' onSubmit={(e) => {
-              console.log('register mutation triggered');
               e.preventDefault();
               login();
             }}>

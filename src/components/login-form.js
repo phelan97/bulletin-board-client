@@ -23,32 +23,33 @@ class LoginForm extends React.Component {
         }}>
         {(login, {loading, error}) => {    
           return (
-            <form method='post' onSubmit={(e) => {
-              console.log('login mutation triggered');
-              e.preventDefault();
-              login();
-            }}>
-              <fieldset disabled={loading} aria-busy={loading}>
-                <legend>Log in</legend>
-                {/* <Error error={error} /> */}
-              
-                <label htmlFor="email">Email</label>
-                <input 
-                type='email' 
-                name='email' 
-                placeholder='Email' 
-                value={this.state.email}
-                onChange={this.saveToState} />
-                <label htmlFor="password">Password</label>
-                <input 
-                type='password' 
-                name='password' 
-                placeholder='Password' 
-                value={this.state.password}
-                onChange={this.saveToState} />
-                <button type='submit'>Log in</button>
-              </fieldset>
-            </form>
+            <div className="login-container">
+              <form method='post' onSubmit={(e) => {
+                e.preventDefault();
+                login();
+              }}>
+                <fieldset disabled={loading} aria-busy={loading}>
+                  <legend>Log in</legend>
+                  {/* <Error error={error} /> */}
+                
+                  <label htmlFor="email">Email</label>
+                  <input 
+                  type='email' 
+                  name='email' 
+                  placeholder='Email' 
+                  value={this.state.email}
+                  onChange={this.saveToState} />
+                  <label htmlFor="password">Password</label>
+                  <input 
+                  type='password' 
+                  name='password' 
+                  placeholder='Password' 
+                  value={this.state.password}
+                  onChange={this.saveToState} />
+                  <button type='submit'>Log in</button>
+                </fieldset>
+              </form>
+            </div>
           )}}
       </Mutation>
     );

@@ -1,8 +1,10 @@
 import React from 'react';
+import RegisterForm from '../components/register-form';
+import './landing.css';
 
 const LandingPage = () => (
   <div>
-    <h2>Landing page</h2>
+    <RegisterForm />
   </div>
 );
 

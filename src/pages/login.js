@@ -2,10 +2,9 @@ import React from 'react';
 import LoginForm from '../components/login-form';
 
 const LoginPage = () => (
-  <div>
-    <h2>Login page</h2>
+  <React.Fragment>
     <LoginForm />
-  </div>
+  </React.Fragment>
 );
 
 export default LoginPage;
