@@ -1,4 +1,4 @@
-Like Trello, but free. What's that, Trello is already free?
+Like Trello, but free. What's that? Trello is already free?
 
 Built with Node.js, Express, React, Apollo Client, and graphql-yoga
 
