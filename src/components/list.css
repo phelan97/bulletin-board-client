@@ -21,3 +21,18 @@
   padding: 10px;
   margin-right: 15px;
 }
+
+.delete-button {
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+  transition: 0.3s;
+  outline: none;
+}
+
+.delete-button:hover {
+  color: #A71A00;
+}
+
+.list-card h3 {
+  margin-top: 0;
+}

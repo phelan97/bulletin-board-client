@@ -1,6 +1,7 @@
 import React from 'react';
 import {Mutation} from 'react-apollo';
 import {DELETE_CARD} from '../graphql/mutations';
+import {FaTrashAlt} from 'react-icons/fa';
 import './card.css';
 
 class Card extends React.Component {
@@ -31,7 +32,11 @@ class Card extends React.Component {
                 this.props.refetch();
               }}>
               {(deleteCard, {error}) => {
-                return <button onClick={deleteCard}>Delete</button>
+                return (
+                  <button className="delete-button" onClick={deleteCard}>
+                    <FaTrashAlt />
+                  </button>
+                );
               }}
             </Mutation>
           </div>

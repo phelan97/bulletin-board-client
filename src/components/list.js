@@ -2,6 +2,7 @@ import React from 'react';
 import {Query, Mutation} from 'react-apollo';
 import {LIST_CARDS, BOARD_LISTS} from '../graphql/queries';
 import {CREATE_CARD, EDIT_LIST, DELETE_LIST} from '../graphql/mutations';
+import {FaTrashAlt} from 'react-icons/fa';
 import Card from './card';
 import './list.css';
 
@@ -60,7 +61,11 @@ class List extends React.Component {
                     });
                 }}>
                  {(deleteList, {error}) => {
-                  return <button onClick={deleteList}>Delete</button>;
+                  return (
+                    <button className="delete-button" onClick={deleteList}>
+                      <FaTrashAlt />
+                    </button>
+                  );
                  }}
                 </Mutation>
               </div>
@@ -82,9 +87,10 @@ class List extends React.Component {
                       addCard();
                       this.setState({cardContents: ''});
                     }}>
-                      <label htmlFor="cardContents">Add new card</label>
                       <input type="text" name="cardContents"
-                        value={this.state.cardContents} onChange={this.saveToState}></input>
+                        value={this.state.cardContents} onChange={this.saveToState}
+                        placeholder="Add new card"
+                      />
                       <button type="submit">Add card</button>
                     </form>
                   );
