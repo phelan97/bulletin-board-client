@@ -38,7 +38,7 @@ export const CREATE_LIST = gql`
 
 export const EDIT_LIST = gql`
   mutation EditListMutation($listId: ID!, $title: String!) {
-    addList(boardId: $boardId, title: $title) {
+    editList(listId: $listId, title: $title) {
       id
       title
     }

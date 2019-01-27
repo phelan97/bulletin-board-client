@@ -1,18 +1,32 @@
 import React from 'react';
-import {Query, Mutation} from 'react-apollo';
+import {Query, Mutation, withApollo} from 'react-apollo';
 import {LIST_CARDS, BOARD_LISTS} from '../graphql/queries';
-import {CREATE_CARD, EDIT_LIST, DELETE_LIST} from '../graphql/mutations';
+import {CREATE_CARD, DELETE_LIST, EDIT_LIST} from '../graphql/mutations';
 import {FaTrashAlt} from 'react-icons/fa';
+import EditableTitle from './editable-title';
 import Card from './card';
 import './list.css';
 
 class List extends React.Component {
-  state = {
-    cardContents: ''
+  constructor(props) {
+    super(props);
+    this.state = {
+      cardContents: ''
+    }
+    this.handleRename = this.handleRename.bind(this);
   }
+
   saveToState = (e) => {
     this.setState({ [e.target.name]: e.target.value})   
   }
+
+  handleRename(newTitle) {
+    this.props.client.mutate({
+      mutation: EDIT_LIST,
+      variables: {listId: this.props.data.id, title: newTitle}
+    })
+  }
+
   render() {
     return (
       <Query query={LIST_CARDS} variables={{listId: this.props.data.id}}>
@@ -70,7 +84,7 @@ class List extends React.Component {
                 </Mutation>
               </div>
               <div>
-                <h3>{this.props.data.title}</h3>
+                <EditableTitle text={this.props.data.title} onRename={this.handleRename}/>
                 <ul className="ul-cards">
                   {renderedCards}
                 </ul>
@@ -104,4 +118,4 @@ class List extends React.Component {
   }
 }
 
-export default List;
+export default withApollo(List);
