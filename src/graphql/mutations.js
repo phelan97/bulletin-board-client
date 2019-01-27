@@ -65,3 +65,12 @@ export const DELETE_CARD = gql`
     removeCard(cardId: $cardId)
   }
 `
+
+export const MOVE_CARD = gql`
+  mutation MoveCardMutation($cardId: ID!, $listId: ID!) {
+    moveCard(cardId: $cardId, listId: $listId) {
+      id
+      content
+    }
+  }
+`;

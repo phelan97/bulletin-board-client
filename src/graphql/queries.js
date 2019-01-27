@@ -42,3 +42,13 @@ export const DEMO_LOGIN = gql`
     demoAccount
   }
 `;
+
+export const GET_DRAGGED_CARD = gql`
+  {
+    draggedCard @client {
+      id
+      listId
+      content
+    }
+  }
+`;

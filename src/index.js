@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { ApolloClient, InMemoryCache } from 'apollo-boost';
 import {ApolloProvider} from 'react-apollo';
 import {BrowserRouter as Router} from 'react-router-dom';
+import {ApolloLink} from 'apollo-link';
 import {createHttpLink} from 'apollo-link-http';
 import {setContext} from 'apollo-link-context';
 import App from './components/App';
@@ -10,10 +11,23 @@ import {endpoint, prodEndpoint} from './config';
 import 'normalize.css';
 import './index.css';
 import * as serviceWorker from './serviceWorker';
+import { withClientState } from 'apollo-link-state';
+
+const cache = new InMemoryCache();
+
+const initialState = {
+  draggedCardId: ''
+};
+
+const stateLink = withClientState({
+  cache,
+  defaults: initialState,
+  resolvers: {}
+});
 
 const httpLink = createHttpLink({
-  // uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
-  uri: prodEndpoint
+  uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
+  // uri: prodEndpoint
 });
 
 const authLink = setContext((_, {headers}) => {
@@ -26,9 +40,11 @@ const authLink = setContext((_, {headers}) => {
   }
 });
 
+const link = ApolloLink.from([stateLink, authLink, httpLink]);
+
 const client = new ApolloClient({
-  cache: new InMemoryCache(),
-  link: authLink.concat(httpLink)
+  cache,
+  link
 });
 
 ReactDOM.render(

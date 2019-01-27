@@ -1,5 +1,5 @@
 import React from 'react';
-import {Mutation} from 'react-apollo';
+import {Mutation, withApollo} from 'react-apollo';
 import {DELETE_CARD} from '../graphql/mutations';
 import {FaTrashAlt} from 'react-icons/fa';
 import './card.css';
@@ -7,20 +7,31 @@ import './card.css';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.handleMouseHover = this.handleMouseHover.bind(this);
+    this.handleMouseEnter = this.handleMouseEnter.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.state = {
       isHovering: false
     }
   }
 
-  handleMouseHover() {
-    this.setState({isHovering: !this.state.isHovering});
+  handleMouseEnter() {
+    this.setState({isHovering: true});
+  }
+
+  handleMouseLeave() {
+    this.setState({isHovering: false})
   }
   render() {
     return (
       <div className="card-item"
-        onMouseEnter={this.handleMouseHover}
-        onMouseLeave={this.handleMouseHover}
+        onMouseEnter={this.handleMouseEnter}
+        onMouseLeave={this.handleMouseLeave}
+        draggable="true"
+        onDragStart={(e) => {
+          this.props.client.writeData({data: {draggedCard: this.props.data}});
+          // e.dataTransfer.setData('application/json', JSON.stringify({cardId: this.props.id}))
+
+        }}
       >
         <span>{this.props.content}</span>
         {this.state.isHovering &&
@@ -46,4 +57,4 @@ class Card extends React.Component {
   }
 }
 
-export default Card;
+export default withApollo(Card);

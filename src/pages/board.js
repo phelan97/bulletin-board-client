@@ -28,7 +28,7 @@ class BoardPage extends React.Component {
         let renderedLists;
         if(data.lists) {
           renderedLists = data.lists.map(list => {
-            return <li key={list.id}><List data={list} boardId={this.state.boardId} /></li>
+            return <li key={list.id}><List data={list} boardId={this.state.boardId} refetch={refetch}/></li>
           });
         }
         return (
