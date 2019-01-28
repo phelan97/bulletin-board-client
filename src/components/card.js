@@ -7,20 +7,25 @@ import './card.css';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.handleMouseHover = this.handleMouseHover.bind(this);
     this.state = {
       isHovering: false
     }
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  handleMouseHover() {
-    this.setState({isHovering: !this.state.isHovering});
+  handleMouseOver() {
+    this.setState({isHovering: true});
+  }
+
+  handleMouseLeave() {
+    this.setState({isHovering: false});
   }
   render() {
     return (
       <div className="card-item"
-        onMouseEnter={this.handleMouseHover}
-        onMouseLeave={this.handleMouseHover}
+        onMouseOver={this.handleMouseOver}
+        onMouseLeave={this.handleMouseLeave}
       >
         <span>{this.props.content}</span>
         {this.state.isHovering &&
