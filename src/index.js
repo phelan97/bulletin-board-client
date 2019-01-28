@@ -12,8 +12,8 @@ import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const httpLink = createHttpLink({
-  uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
-  // uri: prodEndpoint
+  // uri: process.env.NODE_ENV === 'development' ? endpoint : prodEndpoint
+  uri: prodEndpoint
 });
 
 const authLink = setContext((_, {headers}) => {
