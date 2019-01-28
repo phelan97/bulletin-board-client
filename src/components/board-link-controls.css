@@ -5,7 +5,7 @@
 }
 
 .title-region h3 {
-  margin-top: 0;
+  margin: 0;
   display: inline-block;
 }
 
@@ -15,7 +15,7 @@
   outline: none;
 }
 
-.icon-edit:hover {
+.button-edit-title:hover {
   transition: 0.2s ease-in-out;
   transform: scale(1.1);
 }
