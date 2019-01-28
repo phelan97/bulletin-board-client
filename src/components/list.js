@@ -3,9 +3,10 @@ import {Query, Mutation, withApollo} from 'react-apollo';
 import {LIST_CARDS, BOARD_LISTS} from '../graphql/queries';
 import {CREATE_CARD, DELETE_LIST, EDIT_LIST} from '../graphql/mutations';
 import {FaTrashAlt} from 'react-icons/fa';
-import EditableTitle from './editable-title';
+import EditableTitle from './clickable-title';
 import Card from './card';
 import './list.css';
+import ClickableTitle from './clickable-title';
 
 class List extends React.Component {
   constructor(props) {
@@ -84,7 +85,7 @@ class List extends React.Component {
                 </Mutation>
               </div>
               <div>
-                <EditableTitle text={this.props.data.title} onRename={this.handleRename}/>
+                <ClickableTitle startingValue={this.props.data.title} onRename={this.handleRename}/>
                 <ul className="ul-cards">
                   {renderedCards}
                 </ul>

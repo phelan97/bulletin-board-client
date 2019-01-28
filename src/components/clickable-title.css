@@ -2,6 +2,6 @@
   cursor: text;
 }
 
-.list-title input {
-  
+.list-title h3 {
+  margin-top: 0;
 }
