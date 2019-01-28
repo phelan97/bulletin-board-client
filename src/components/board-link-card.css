@@ -7,19 +7,6 @@
   padding: 10px;
 }
 
-.board-card h3 {
-  margin-top: 0;
-}
-
 .board-card button {
   float: right;
-}
-
-.board-card a {
-  text-decoration: none;
-  color: #37474F;
-}
-
-.board-card a:hover {
-  text-decoration: underline;
 }

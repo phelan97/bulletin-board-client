@@ -1,14 +1,12 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
 import {Mutation} from 'react-apollo';
 import {DELETE_BOARD} from '../graphql/mutations';
+import BoardLinkControls from './board-link-controls';
 import './board-link-card.css';
 
 const BoardLinkCard = (props) => (
     <div className="board-card" key={props.id}>
-      <Link to={`/board/${props.id}`}>
-        <h3>{props.title}</h3>
-      </Link>
+      <BoardLinkControls linkedBoardId={props.id} startingTitleValue={props.title}/>
       <Mutation mutation={DELETE_BOARD} variables={{boardId: props.id}}
         onCompleted={data => {
           props.refetch();
