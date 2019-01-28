@@ -55,6 +55,7 @@ class List extends React.Component {
           return (
             <div className="list-card">
               <div className="list-controls">
+                <ClickableTitle startingValue={this.props.data.title} onRename={this.handleRename}/>
                 {/* <Mutation mutation={EDIT_LIST}
                   variables={{content: this.state.cardContents, listId: this.props.data.id}}
                   onCompleted={data => {
@@ -85,7 +86,6 @@ class List extends React.Component {
                 </Mutation>
               </div>
               <div>
-                <ClickableTitle startingValue={this.props.data.title} onRename={this.handleRename}/>
                 <ul className="ul-cards">
                   {renderedCards}
                 </ul>
@@ -102,7 +102,7 @@ class List extends React.Component {
                       addCard();
                       this.setState({cardContents: ''});
                     }}>
-                      <input type="text" name="cardContents"
+                      <textarea name="cardContents"
                         value={this.state.cardContents} onChange={this.saveToState}
                         placeholder="Add new card"
                       />

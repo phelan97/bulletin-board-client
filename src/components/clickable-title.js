@@ -30,7 +30,12 @@ class ClickableTitle extends React.Component {
   }
 
   dismiss() {
+    if(!this.state.titleValue) {
+      this.setState({titleValue: this.props.startingValue});
+    }
+
     this.setState({editing: false});
+
     if(this.state.titleValue !== this.props.startingValue) {
       this.props.onRename(this.state.titleValue);
     }

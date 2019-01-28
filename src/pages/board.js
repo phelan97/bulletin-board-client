@@ -44,7 +44,7 @@ class BoardPage extends React.Component {
             }}>
               {(addList, {error}) => {
                 return (
-                  <form onSubmit={e => {
+                  <form className="form-add-list" onSubmit={e => {
                     e.preventDefault();
                     addList();
                     this.setState({listName: ''});
