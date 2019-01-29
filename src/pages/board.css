@@ -30,3 +30,14 @@
   list-style: none;
   display: flex;
 }
+
+@media only screen and (max-width: 550px) {
+  .list-container {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    list-style: none;
+  }
+}
