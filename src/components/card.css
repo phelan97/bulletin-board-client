@@ -8,6 +8,7 @@
   margin-top: 5px;
   margin-bottom: 5px;
   word-wrap: break-word;
+  position: relative;
 }
 
 .card-item:hover {
@@ -15,5 +16,19 @@
 }
 
 .edit-controls {
-  float: right;
+  position: absolute;
+  right: 3px;
+  top: 3px;
+}
+
+.delete-button {
+  background: rgba(200, 200, 200, 0.8);
+  border: 1px solid #ccc;
+  padding: 3px;
+  padding-bottom: 0;
+  margin-right: 0;
+}
+
+.delete-button:hover {
+  color: #A71A00;
 }

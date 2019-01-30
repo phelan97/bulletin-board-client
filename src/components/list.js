@@ -114,7 +114,7 @@ class List extends React.Component {
                 }}>
                  {(deleteList, {error}) => {
                   return (
-                    <button className="delete-button" onClick={deleteList}>
+                    <button className="list-delete" onClick={deleteList}>
                       <FaTrashAlt />
                     </button>
                   );
