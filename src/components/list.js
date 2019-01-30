@@ -19,20 +19,18 @@ class List extends React.Component {
     this.setState({ [e.target.name]: e.target.value})   
   }
   handleDrop(e) {
-    console.log('drop');
-    // console.log(e.dataTransfer.getData('application/json').cardId);
     let {draggedCard} = this.props.client.readQuery({query: GET_DRAGGED_CARD});
     let oldListId = draggedCard.listId;
 
+    // move the card to the specified list
     this.props.client.mutate({
       mutation: MOVE_CARD,
       variables: {cardId: draggedCard.id, listId: this.props.data.id},
-      onCompleted(data) {
-        console.log('data', data);
-      }
     });
     
+    // update drop target (this list) + the listId on the card
     const data = this.props.client.readQuery({ query: LIST_CARDS, variables: {listId: this.props.data.id} });
+    draggedCard.listId = this.props.data.id;
     data.cards = data.cards.concat(draggedCard);
     this.props.client.writeQuery({
       query: LIST_CARDS,
@@ -40,6 +38,7 @@ class List extends React.Component {
       variables: {listId: this.props.data.id}
     });
 
+    // update drag start (other list)
     const oldListData = this.props.client.readQuery({ query: LIST_CARDS, variables: {listId: oldListId} });
     oldListData.cards = oldListData.cards.filter(card => card.id !== draggedCard.id);
     this.props.client.writeQuery({
@@ -47,17 +46,8 @@ class List extends React.Component {
       data: oldListData,
       variables: {listId: oldListId}
     });
-    
-    console.log('starting list data');
-    console.log(oldListData);
-    console.log('dest list data');
-    console.log(data);
-    console.log('dragged card');
-    console.log(draggedCard);
-
-    this.props.refetch();
-    // console.log(draggedCardId);
   }
+  
   render() {
     return (
       <Query query={LIST_CARDS} variables={{listId: this.props.data.id}}>
