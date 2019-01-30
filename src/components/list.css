@@ -3,7 +3,9 @@
 }
 
 .list-controls {
-  float: right;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
 .ul-cards {
@@ -16,10 +18,9 @@
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #CFD8DC;
-  /* margin: 0px 20px 20px; */
-  /* margin: 20px; */
   padding: 10px;
   margin-right: 15px;
+  max-width: 350px;
 }
 
 .delete-button {
@@ -27,12 +28,43 @@
   border-style: none;
   transition: 0.3s;
   outline: none;
+  margin-left: 10px;
 }
 
 .delete-button:hover {
   color: #A71A00;
 }
 
-.list-card h3 {
-  margin-top: 0;
+.list-title {
+  flex-grow: 1;
+}
+
+.list-card form {
+  margin-top: 10px;
+  width: 100%;
+}
+
+.list-card form textarea {
+  height: 5em;
+  width: 100%;
+  padding: 5px;
+  resize: none;
+  border: none;
+  border-radius: 2px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+.list-controls input {
+  width: 100%;
+}
+
+.card-item {
+  width: 100%;
+}
+
+@media only screen and (max-width: 550px) {
+  .list-card {
+    margin-right: 0;
+    max-width: none;
+  }
 }

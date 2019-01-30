@@ -7,24 +7,24 @@ import './card.css';
 class Card extends React.Component {
   constructor(props) {
     super(props);
-    this.handleMouseEnter = this.handleMouseEnter.bind(this);
-    this.handleMouseLeave = this.handleMouseLeave.bind(this);
     this.state = {
       isHovering: false
     }
+    this.handleMouseOver = this.handleMouseOver.bind(this);
+    this.handleMouseLeave = this.handleMouseLeave.bind(this);
   }
 
-  handleMouseEnter() {
+  handleMouseOver() {
     this.setState({isHovering: true});
   }
 
   handleMouseLeave() {
-    this.setState({isHovering: false})
+    this.setState({isHovering: false});
   }
   render() {
     return (
       <div className="card-item"
-        onMouseEnter={this.handleMouseEnter}
+        onMouseOver={this.handleMouseOver}
         onMouseLeave={this.handleMouseLeave}
         draggable="true"
         onDragStart={(e) => {

@@ -3,8 +3,10 @@ import {Query, Mutation, withApollo} from 'react-apollo';
 import {LIST_CARDS, BOARD_LISTS, GET_DRAGGED_CARD} from '../graphql/queries';
 import {CREATE_CARD, EDIT_LIST, DELETE_LIST, MOVE_CARD} from '../graphql/mutations';
 import {FaTrashAlt} from 'react-icons/fa';
+import EditableTitle from './clickable-title';
 import Card from './card';
 import './list.css';
+import ClickableTitle from './clickable-title';
 
 class List extends React.Component {
   constructor(props) {
@@ -13,6 +15,7 @@ class List extends React.Component {
       cardContents: ''
     }
     this.handleDrop = this.handleDrop.bind(this);
+    this.handleRename = this.handleRename.bind(this);
   }
 
   saveToState = (e) => {
@@ -48,6 +51,14 @@ class List extends React.Component {
     });
   }
   
+
+  handleRename(newTitle) {
+    this.props.client.mutate({
+      mutation: EDIT_LIST,
+      variables: {listId: this.props.data.id, title: newTitle}
+    })
+  }
+
   render() {
     return (
       <Query query={LIST_CARDS} variables={{listId: this.props.data.id}}>
@@ -80,6 +91,7 @@ class List extends React.Component {
               onDragEnter={e => e.preventDefault()}
             >
               <div className="list-controls">
+                <ClickableTitle startingValue={this.props.data.title} onRename={this.handleRename}/>
                 {/* <Mutation mutation={EDIT_LIST}
                   variables={{content: this.state.cardContents, listId: this.props.data.id}}
                   onCompleted={data => {
@@ -110,8 +122,6 @@ class List extends React.Component {
                 </Mutation>
               </div>
               <div>
-                <h3>{this.props.data.title}</h3>
-                <h3>{this.props.data.id}</h3>
                 <ul className="ul-cards">
                   {renderedCards}
                 </ul>
@@ -128,7 +138,7 @@ class List extends React.Component {
                       addCard();
                       this.setState({cardContents: ''});
                     }}>
-                      <input type="text" name="cardContents"
+                      <textarea name="cardContents"
                         value={this.state.cardContents} onChange={this.saveToState}
                         placeholder="Add new card"
                       />

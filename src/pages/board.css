@@ -17,7 +17,7 @@
   flex: 0 0 auto;
 }
 
-.list-container form {
+.form-add-list {
   display: inline-block;
   margin-top: 20px;
 }
@@ -29,4 +29,15 @@
 .all-lists {
   list-style: none;
   display: flex;
+}
+
+@media only screen and (max-width: 550px) {
+  .list-container {
+    display: block;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    list-style: none;
+  }
 }

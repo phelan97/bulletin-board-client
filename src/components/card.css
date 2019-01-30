@@ -4,12 +4,9 @@
   border-radius: 2px;
   box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
   background: #fff;
-  /* margin: 0px 20px 20px; */
-  /* margin: 20px; */
   padding: 10px;
   margin-top: 5px;
   margin-bottom: 5px;
-  max-width: 300px;
   word-wrap: break-word;
 }
 
